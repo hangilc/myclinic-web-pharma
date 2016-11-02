@@ -1,0 +1,26 @@
+{
+  "name": "myclinic-web-pharma",
+  "version": "1.0.0",
+  "description": "Local web server for pharma",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hangilc/myclinic-web-pharma.git"
+  },
+  "author": "Hangil Chang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hangilc/myclinic-web-pharma/issues"
+  },
+  "homepage": "https://github.com/hangilc/myclinic-web-pharma#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http-proxy": "^1.15.2",
+    "myclinic-drawer-print-server": "^2.0.0",
+    "myclinic-pharma": "^1.2.1"
+  }
+}
