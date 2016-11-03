@@ -35,7 +35,9 @@ Object.keys(subs).forEach(function(key){
 });
 
 app.use("/service", function(req, res){
-	proxy.web(req, res, { target: config["service-url"] });
+	proxy.web(req, res, { target: config["service-url"] }, function(e){
+		res.status(500).send({ error: e });
+	});
 });
 
 var port = config.port || 9002;
