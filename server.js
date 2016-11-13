@@ -1,31 +1,13 @@
 "use strict";
 
-var app = require("./index");
-var Config = require("myclinic-config");
-var path = require("path");
-var program = require("commander");
+var web = require("myclinic-web");
 
-program
-	.option("-c, --config <configpath>", "Read configuration")
-	.option("-s, --service <service-url>", "Set service server")
-	.option("-p, --port <port>", "Set listening port")
-	.parse(process.argv);
+var subs = [
+	{
+		name: "pharma",
+		module: require("myclinic-pharma"),
+		configKey: "pharma"
+	}
+];
 
-var config = {};
-
-if( program.config ){
-	Config.extend(config, Config.read(program.config));
-} else {
-	Config.extend(config, Config.read(path.join(process.env.MYCLINIC_CONFIG, "pharma")));
-}
-if( program.service ){
-	config["service-url"] = program.service;
-} else {
-	config["service-url"] = process.env.MYCLINIC_SERVER;
-}
-if( program.port ){
-	config.port = program.port;
-}
-
-app.run(config);
-
+web.cmd.runFromCommand(subs, 9002);
